@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+  <title>Mango Royale | Premium Mango Orchard</title>
+  <!-- Google Fonts + Font Awesome (premium look) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #FEF9E6;
+      color: #2D2A24;
+      scroll-behavior: smooth;
+    }
+
+    /* Ultra Premium UI / smooth gradients */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header / Nav */
+    .navbar {
+      background: #FFFFFFE6;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 193, 7, 0.2);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* Logo + home button area */
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .home-btn {
+      background: #FFB347;
+      color: #2D1F00;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 8px 16px;
+      border-radius: 40px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      border: 1px solid rgba(255,215,130,0.6);
+    }
+
+    .home-btn i {
+      font-size: 1rem;
+    }
+
+    .home-btn:hover {
+      background: #FFA01E;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 20px -10px rgba(255,160,30,0.4);
+    }
+
+    /* my image (mango emblem / profile) */
+    .brand-img {
+      width: 48px;
+      height: 48px;
+      border-radius: 60px;
+      object-fit: cover;
+      background: #FFF0D0;
+      border: 2px solid #FFD966;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.05);
+    }
+
+    .brand-text {
+      font-weight: 700;
+      font-size: 1.35rem;
+      letter-spacing: -0.3px;
+      background: linear-gradient(135deg, #D97917, #B45F1B);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    /* hamburger menu (mobile first) */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+      background: transparent;
+      border: none;
+      padding: 8px;
+      z-index: 1100;
+    }
+
+    .hamburger span {
+      width: 28px;
+      height: 2.5px;
+      background: #C25D00;
+      border-radius: 4px;
+      transition: 0.2s;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-menu li a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #3A2C1F;
+      transition: 0.2s;
+      font-size: 1rem;
+      letter-spacing: -0.2px;
+    }
+
+    .nav-menu li a:hover {
+      color: #F0831C;
+    }
+
+    /* responsive */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+      .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 72px;
+        flex-direction: column;
+        background: #FFFBF4;
+        backdrop-filter: blur(12px);
+        width: 80%;
+        max-width: 280px;
+        height: calc(100vh - 72px);
+        transition: 0.3s ease-in-out;
+        box-shadow: 8px 0 32px rgba(0,0,0,0.08);
+        padding: 32px 24px;
+        gap: 24px;
+        align-items: flex-start;
+        border-right: 1px solid #FFE2B5;
+        z-index: 999;
+      }
+      .nav-menu.active {
+        left: 0;
+      }
+      .nav-menu li a {
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .container {
+        padding: 0 20px;
+      }
+    }
+
+    /* hero section */
+    .hero {
+      padding: 60px 0 32px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      background: linear-gradient(125deg, #E67E22, #C0392B);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #5A4A32;
+      margin-top: 12px;
+    }
+
+    /* mango price grid (fruit er moddhe dam price 10 vrity) */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 48px 0 24px 0;
+      border-left: 8px solid #F4A261;
+      padding-left: 20px;
+    }
+    .mango-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 32px;
+      margin: 32px 0 16px;
+    }
+    .mango-card {
+      background: white;
+      border-radius: 36px;
+      overflow: hidden;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08);
+      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      border: 1px solid #FFE3B5;
+    }
+    .mango-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 28px 36px -15px rgba(230,126,34,0.2);
+    }
+    .mango-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background: #FFF0D6;
+    }
+    .card-content {
+      padding: 20px 18px 24px;
+    }
+    .card-content h3 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .variety {
+      color: #F18F01;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .price {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: #E67E22;
+      margin: 10px 0 6px;
+    }
+    .price small {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #7D6E58;
+    }
+    .vrity-badge {
+      background: #FCE5C7;
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #B45A1C;
+    }
+    hr {
+      margin: 40px 0;
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, #FFD966, transparent);
+    }
+
+    /* about + who i am */
+    .about-section {
+      background: #FFF7EC;
+      padding: 56px 28px;
+      border-radius: 48px;
+      margin: 40px 0;
+      box-shadow: inset 0 1px 4px #FFF0DB, 0 20px 30px -20px rgba(0,0,0,0.05);
+    }
+    .about-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+    }
+    .about-text {
+      flex: 2;
+    }
+    .about-text h3 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .signature {
+      font-size: 1rem;
+      margin-top: 20px;
+      font-weight: 500;
+      color: #A3591E;
+      border-left: 3px solid #F4A261;
+      padding-left: 20px;
+    }
+    .about-img {
+      flex: 1;
+      text-align: center;
+    }
+    .about-img img {
+      width: 160px;
+      height: 160px;
+      border-radius: 80px;
+      object-fit: cover;
+      border: 5px solid #FFD98C;
+      box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
+    }
+
+    /* contact info */
+    .contact-card {
+      background: #FFFFFFCC;
+      backdrop-filter: blur(4px);
+      border-radius: 40px;
+      padding: 32px 28px;
+      margin: 48px 0;
+      box-shadow: 0 12px 28px -12px rgba(0,0,0,0.08);
+      border: 1px solid #FFE2B0;
+    }
+    .contact-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      justify-content: space-between;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-weight: 500;
+    }
+    .contact-item i {
+      font-size: 1.6rem;
+      color: #EA9D3C;
+    }
+
+    /* footer premium */
+    .premium-footer {
+      background: #2A241C;
+      color: #FFE2BC;
+      border-radius: 40px 40px 0 0;
+      padding: 48px 32px 32px;
+      margin-top: 70px;
+    }
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+    }
+    .footer-logo h4 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #FFBB66;
+    }
+    .footer-links ul {
+      list-style: none;
+    }
+    .footer-links li {
+      margin: 8px 0;
+    }
+    .footer-links a {
+      color: #FFD8A5;
+      text-decoration: none;
+    }
+    .copyright {
+      text-align: center;
+      margin-top: 48px;
+      font-size: 0.8rem;
+      border-top: 1px solid #4A3F32;
+      padding-top: 24px;
+    }
+
+    /* whatsapp button (premium floating) */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 28px;
+      background: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      box-shadow: 0 10px 25px -5px rgba(37,211,102,0.4);
+      transition: 0.2s;
+      z-index: 1050;
+      text-decoration: none;
+      backdrop-filter: blur(2px);
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.08);
+      background: #20BA5E;
+      box-shadow: 0 20px 28px -10px rgba(37,211,102,0.6);
+    }
+    @media (max-width: 500px) {
+      .whatsapp-float {
+        width: 52px;
+        height: 52px;
+        font-size: 28px;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+
+    button, a {
+      cursor: pointer;
+    }
+    i, span {
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- premium navbar with hamburger -->
+  <div class="navbar">
+    <div class="nav-container">
+      <div class="logo-area">
+        <!-- MY IMAGE (premium brand) you can replace src with actual image -->
+        <img class="brand-img" src="https://placehold.co/400x400/FFE5B4/CC8B2C?text=🍑" alt="Mango Grower">
+        <a href="#" class="home-btn" id="homeButton"><i class="fas fa-house-chimney"></i> Home</a>
+        <span class="brand-text">MangoRoyale</span>
+      </div>
+      <button class="hamburger" id="hamburgerBtn" aria-label="menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#fruits"><i class="fas fa-apple-alt"></i> Mangoes</a></li>
+        <li><a href="#about"><i class="fas fa-user"></i> Who I Am</a></li>
+        <li><a href="#contact"><i class="fas fa-address-card"></i> Contact</a></li>
+        <li><a href="#footer"><i class="fas fa-crown"></i> Premium</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <main class="container">
+    <!-- hero simple -->
+    <div class="hero" id="home">
+      <h1>Sun-Kissed <span style="color:#E57C1C;">Mangoes</span></h1>
+      <p>直接从果园摘取 · 10+ 品种奢华价目</p>
+    </div>
+
+    <!-- Fruit section with DAM price and 10 variety -->
+    <div id="fruits">
+      <div class="section-title"><i class="fas fa-seedling" style="margin-right: 12px;"></i> Royal Mango Collection <span style="font-size: 1rem;">(10+ varieties)</span></div>
+      <div class="mango-grid" id="mangoGrid"></div>
+    </div>
+
+    <!-- About Section (who i am) -->
+    <div id="about">
+      <div class="about-section">
+        <div class="about-flex">
+          <div class="about-text">
+            <h3>🍋‍🟩 Who I Am — Mango Artisan</h3>
+            <p>I'm <strong>Rashed Mahmud</strong>, third‑generation mango grower from Chapainawabganj. My family has nurtured mango orchards for over 40 years. I personally handpick every single fruit to bring you the creamiest, fiberless, aromatic mangoes — Alphonso, Langra, Himsagar, plus exotic hybrids. </p>
+            <p>“My philosophy: pure nature, zero chemicals, and the sweetness of honesty.”</p>
+            <div class="signature"> — Rashed, The Mango Farmer</div>
+          </div>
+          <div class="about-img">
+            <!-- My image demonstration: profile photo, again you can replace with any actual image URL -->
+            <img src="https://placehold.co/600x600/F5DEB3/AA6F3C?text=Mango+King" alt="Rashed with mango">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Info -->
+    <div id="contact">
+      <div class="contact-card">
+        <h3 style="font-size: 1.8rem; margin-bottom: 20px;"><i class="fas fa-phone-alt"></i> Let's Connect</h3>
+        <div class="contact-flex">
+          <div class="contact-item"><i class="fas fa-map-marker-alt"></i> <span>Mango Valley, Rajshahi Div, Bangladesh</span></div>
+          <div class="contact-item"><i class="fas fa-phone"></i> <span>+880 1763 685251</span></div>
+          <div class="contact-item"><i class="fas fa-envelope"></i> <span>hello@mangoroyale.com</span></div>
+          <div class="contact-item"><i class="fab fa-instagram"></i> <span>@mangoroyale.premium</span></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- footer premium -->
+  <footer class="premium-footer" id="footer">
+    <div class="footer-inner container" style="max-width: 1280px; margin:0 auto;">
+      <div class="footer-logo">
+        <h4><i class="fas fa-crown"></i> MANGO ROYALE</h4>
+        <p style="margin-top: 10px;">Premium organic mangoes delivered worldwide.</p>
+      </div>
+      <div class="footer-links">
+        <ul>
+          <li><a href="#fruits">Harvest</a></li>
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="#contact">Wholesale</a></li>
+          <li><a href="#">Sustainability</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <ul>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      © 2025 MANGO ROYALE — where every mango tells a story. ✨
+    </div>
+  </footer>
+
+  <!-- WhatsApp order button (number given 01763685251)  format international: +8801763685251 -> used in wa.me -->
+  <a href="https://wa.me/8801763685251?text=Hello%20Mango%20Royale%2C%20I%20want%20to%20order%20premium%20mangoes%20%F0%9F%A5%AD" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script>
+    // 10 vrity mango list (price mentioned 10 varieties, showing 10+ distinct types)
+    const mangoVarieties = [
+      { name: "Alphonso", variety: "King of Mangoes", price: 12, unit: "per kg", img: "https://placehold.co/600x400/F5DEB3/E67E22?text=Alphonso", badge: "Premium" },
+      { name: "Himsagar", variety: "Aromatic & Sweet", price: 10, unit: "per kg", img: "https://placehold.co/600x400/FFE0B5/CC7A2C?text=Himsagar", badge: "Classic" },
+      { name: "Langra", variety: "Fibreless & Juicy", price: 9, unit: "per kg", img: "https://placehold.co/600x400/FEE1B3/D4782C?text=Langra", badge: "Organic" },
+      { name: "Fazli", variety: "Large size delight", price: 11, unit: "per kg", img: "https://placehold.co/600x400/FFDCA8/BD6B26?text=Fazli", badge: "Limited" },
+      { name: "Amrapali", variety: "Hybrid Sweetness", price: 10, unit: "per kg", img: "https://placehold.co/600x400/FFDAB9/C6681E?text=Amrapali", badge: "New" },
+      { name: "Kesar", variety: "Saffron Aroma", price: 13, unit: "per kg", img: "https://placehold.co/600x400/F9CF8C/D97E2E?text=Kesar", badge: "Royal" },
+      { name: "Totapuri", variety: "Tangy & Crunchy", price: 7, unit: "per kg", img: "https://placehold.co/600x400/F8D5A3/C9752F?text=Totapuri", badge: "Fresh" },
+      { name: "Neelum", variety: "Evergreen variety", price: 10, unit: "per kg", img: "https://placehold.co/600x400/FCE1B7/CF712A?text=Neelum", badge: "Sweet" },
+      { name: "Bombay Green", variety: "Early summer burst", price: 9, unit: "per kg", img: "https://placehold.co/600x400/FADCA3/B75F1C?text=Bombay+Green", badge: "Rare" },
+      { name: "Mallika", variety: "Honeyed Flavor", price: 11, unit: "per kg", img: "https://placehold.co/600x400/FDDBA4/D8671D?text=Mallika", badge: "Signature" },
+      { name: "Sindhri", variety: "Pakistani Heritage", price: 14, unit: "per kg", img: "https://placehold.co/600x400/FCE0AD/E17A2C?text=Sindhri", badge: "Exotic" },
+      { name: "Chaunsa", variety: "Silky Texture", price: 15, unit: "per kg", img: "https://placehold.co/600x400/FCE4BB/F0852E?text=Chaunsa", badge: "Gold" }
+    ];
+
+    const mangoGrid = document.getElementById('mangoGrid');
+    function renderMangoCards() {
+      if (!mangoGrid) return;
+      mangoGrid.innerHTML = '';
+      mangoVarieties.forEach(m => {
+        const card = document.createElement('div');
+        card.className = 'mango-card';
+        card.innerHTML = `
+          <img class="mango-img" src="${m.img}" alt="${m.name}" loading="lazy">
+          <div class="card-content">
+            <h3>${m.name}</h3>
+            <div class="variety"><i class="fas fa-tag"></i> ${m.variety}</div>
+            <div class="price">BDT ${m.price} <small>${m.unit}</small></div>
+            <div class="vrity-badge"><i class="fas fa-star-of-life"></i> ${m.badge} • ${m.name} vrity</div>
+            <div style="margin-top: 14px;"><span style="background:#F7E2C0; padding:5px 12px; border-radius:50px; font-size:0.75rem;">⭐ 10+ premium variety</span></div>
+          </div>
+        `;
+        mangoGrid.appendChild(card);
+      });
+    }
+
+    renderMangoCards();
+
+    // HAMBURGER MENU LOGIC (mobile friendly)
+    const hamburger = document.getElementById('hamburgerBtn');
+    const navMenu = document.getElementById('navMenu');
+
+    if (hamburger && navMenu) {
+      hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        // optional: animate hamburger icon
+        const spans = hamburger.querySelectorAll('span');
+        if (navMenu.classList.contains('active')) {
+          spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+          spans[1].style.opacity = '0';
+          spans[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
+        } else {
+          spans[0].style.transform = 'none';
+          spans[1].style.opacity = '1';
+          spans[2].style.transform = 'none';
+        }
+      });
+      // close menu when clicking a link (smooth navigation)
+      const allLinks = navMenu.querySelectorAll('a');
+      allLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('active');
+          const spans = hamburger.querySelectorAll('span');
+          spans[0].style.transform = 'none';
+          spans[1].style.opacity = '1';
+          spans[2].style.transform = 'none';
+        });
+      });
+    }
+
+    // HOME BUTTON with my image functionality: scroll to top smoothly
+    const homeBtn = document.getElementById('homeButton');
+    if (homeBtn) {
+      homeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // optional: also collapse menu
+        if (navMenu && navMenu.classList.contains('active')) {
+          navMenu.classList.remove('active');
+          if (hamburger) {
+            const spans = hamburger.querySelectorAll('span');
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+          }
+        }
+      });
+    }
+
+    // smooth scroll for all anchor links (nav menu sections)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === "#" || targetId === "") return;
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Additional micro interaction: adds premium feel, and ensure img error fallback
+    const allImgs = document.querySelectorAll('img');
+    allImgs.forEach(img => {
+      img.addEventListener('error', function() {
+        if (this.src.includes('placehold')) {
+          // already placeholder no infinite loop
+          this.src = 'https://placehold.co/600x400/FFE2B5/C57F1E?text=Mango';
+        }
+      });
+    });
+
+    // fix: my image (brand image top left + about image already set)
+    // For better user experience, we also set fallback for brand-img if needed.
+    const brandImg = document.querySelector('.brand-img');
+    if (brandImg && brandImg.complete && (brandImg.naturalWidth === 0 || brandImg.naturalHeight === 0)) {
+      brandImg.src = 'https://placehold.co/400x400/F7DE9A/E67E22?text=Mango';
+    }
+  </script>
+</body>
+</html>
